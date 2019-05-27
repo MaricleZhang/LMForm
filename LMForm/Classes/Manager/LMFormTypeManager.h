@@ -2,7 +2,7 @@
 //  LMFormTypeManager.h
 //  ConfigurableForm
 //
-//  Created by 张建 on 2019/5/22.
+//  Created by Zhang on 2019/5/22.
 //  Copyright © 2019 Maricle. All rights reserved.
 //
 

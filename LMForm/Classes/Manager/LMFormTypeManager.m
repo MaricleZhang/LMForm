@@ -2,7 +2,7 @@
 //  LMFormTypeManager.m
 //  ConfigurableForm
 //
-//  Created by 张建 on 2019/5/22.
+//  Created by Zhang on 2019/5/22.
 //  Copyright © 2019 Maricle. All rights reserved.
 //
 
@@ -56,10 +56,10 @@
 
 - (void)registerCellClass:(Class)cls forKey:(NSString *)key
 {
-    NSAssert(cls,@"");
-//    if (cls) {
-//        <#statements#>
-//    }
+    if (cls && key)
+    {
+        [self.keyCellTypes setObject:cls forKey:key];
+    }
 }
 
 - (Class)getClassWithKey:(NSString *)key

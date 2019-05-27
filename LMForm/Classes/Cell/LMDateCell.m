@@ -2,7 +2,7 @@
 //  LMDateCell.m
 //  LoanMarket
 //
-//  Created by 张建 on 2019/5/8.
+//  Created by Zhang on 2019/5/8.
 //  Copyright © 2019 Maricle. All rights reserved.
 //
 

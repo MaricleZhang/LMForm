@@ -2,7 +2,7 @@
 //  UIImage+Bundle.m
 //  LMForm
 //
-//  Created by 张建 on 2019/5/23.
+//  Created by Zhang on 2019/5/23.
 //
 
 #import "UIImage+Bundle.h"

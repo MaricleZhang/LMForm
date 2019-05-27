@@ -93,12 +93,12 @@
     model3.message = @"请选择出生日期";
     [self.dataArray addObject:model3];
     
-//    // 自定义cell
-//    [[LMFormTypeManager manager] registerCellClass:[LMCustomCell class] forKey:kCustomCell];
-//    LMFormModel *customModel = [LMFormModel new];
-//    customModel.formType = kCustomCell;
-//    customModel.title = @"custom cell";
-//    [self.dataArray addObject:customModel];
+    // 自定义cell
+    [[LMFormTypeManager manager] registerCellClass:[LMCustomCell class] forKey:kCustomCell];
+    LMFormModel *customModel = [LMFormModel new];
+    customModel.formType = kCustomCell;
+    customModel.title = @"custom cell";
+    [self.dataArray addObject:customModel];
 
     self.tableView.dataArray = self.dataArray;
 }

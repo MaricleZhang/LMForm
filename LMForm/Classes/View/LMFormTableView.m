@@ -2,7 +2,7 @@
 //  LMFormTableView.m
 //  LoanMarket
 //
-//  Created by 张建 on 2019/4/30.
+//  Created by Zhang on 2019/4/30.
 //  Copyright © 2019 Maricle. All rights reserved.
 //
 
@@ -66,20 +66,28 @@
     return (model.height > 0) ? model.height : QL_XX_6(50);
 }
 
+- (void)registerClassWithDataArray:(NSArray<LMFormModel *> *)dataArray
+{
+    NSMutableSet *set = [NSMutableSet set];
+    for (LMFormModel *model in self.dataArray)
+    {
+        Class cls = [[LMFormTypeManager manager] getClassWithKey:model.formType];
+        [set addObject:cls];
+    }
+    
+    for (Class cls in set)
+    {
+        [self registerClass:cls forCellReuseIdentifier:NSStringFromClass(cls)];
+    }
+}
+
 #pragma mark - Setter/Getter
 
 - (void)setDataArray:(NSArray<LMFormModel *> *)dataArray
 {
     _dataArray = dataArray;
     
-    for (LMFormModel *model in self.dataArray)
-    {
-        Class cls = [[LMFormTypeManager manager] getClassWithKey:model.formType];
-        if (cls)
-        {
-            [self registerClass:cls forCellReuseIdentifier:NSStringFromClass(cls)];
-        }
-    }
+    [self registerClassWithDataArray:dataArray];
     
     [self reloadData];
 }

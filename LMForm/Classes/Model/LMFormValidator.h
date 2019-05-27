@@ -2,7 +2,7 @@
 //  LMFormValidator.h
 //  LoanMarket
 //
-//  Created by 张建 on 2019/5/5.
+//  Created by Zhang on 2019/5/5.
 //  Copyright © 2019 Maricle. All rights reserved.
 //
 
