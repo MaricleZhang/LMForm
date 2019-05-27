@@ -1,0 +1,107 @@
+//
+//  LMDateCell.m
+//  LoanMarket
+//
+//  Created by 张建 on 2019/5/8.
+//  Copyright © 2019 Maricle. All rights reserved.
+//
+
+#import "LMDateCell.h"
+#import "LMPopupView.h"
+#import "UIImage+Bundle.h"
+
+@interface LMDateCell ()
+
+@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIImageView *arrowImgView;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
+@end
+
+@implementation LMDateCell
+
+- (void)createUI
+{
+    [super createUI];
+    
+    [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.arrowImgView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSelectedAction)];
+    [self.contentView addGestureRecognizer:tap];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.textField.frame = CGRectMake(Screen_Width - QL_XX_6(52) - Screen_Width / 2 , 0, Screen_Width / 2, self.contentView.height);
+    self.arrowImgView.frame = CGRectMake(Screen_Width - QL_XX_6(24) - QL_XX_6(24), 0, QL_XX_6(24), QL_XX_6(24));
+    self.arrowImgView.centerY = self.contentView.height / 2;
+}
+
+#pragma mark - Responce
+
+- (void)tapSelectedAction
+{
+    @weakify(self)
+    [LMPopupView showPopupViewWithPickView:self.datePicker title:self.model.placeholder confirmBlock:^{
+        @strongify(self)
+        NSDate *date = self.datePicker.date;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *text = [formatter stringFromDate:date];
+        self.model.value = text;
+        self.textField.text = text;
+    } cancelBlock:^{
+        
+    }];
+}
+
+#pragma mark - Setter/Getter
+
+- (UITextField *)textField
+{
+    if (!_textField)
+    {
+        _textField = [[UITextField alloc] init];
+        _textField.userInteractionEnabled = NO;
+        _textField.textColor = QL_UIColorFromHEX(0x333333);
+        _textField.font = [UIFont systemFontOfSize:QL_XX_6(14)];
+        _textField.textAlignment = NSTextAlignmentRight;
+        [_textField setValue:QL_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
+    }
+    return _textField;
+}
+
+- (UIImageView *)arrowImgView
+{
+    if (!_arrowImgView)
+    {
+        _arrowImgView = [[UIImageView alloc] initWithImage:[UIImage bundleImageWithNamed:@"lm_common_arrow"]];
+    }
+    return _arrowImgView;
+}
+
+- (UIDatePicker *)datePicker
+{
+    if (!_datePicker)
+    {
+        _datePicker = [[UIDatePicker alloc] init];
+        _datePicker.datePickerMode = UIDatePickerModeDate;
+        _datePicker.backgroundColor = [UIColor clearColor];
+        _datePicker.date = [NSDate date];
+        _datePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];
+    }
+    return _datePicker;
+}
+
+- (void)configModel:(LMFormModel *)model
+{
+    [super configModel:model];
+    
+    self.textField.text = model.value;
+    self.textField.placeholder = model.placeholder;
+}
+
+@end

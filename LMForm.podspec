@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LMForm'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of LMForm.'
+  s.version          = '0.0.1'
+  s.summary          = 'LMForm 动态配置表单解决方案'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,22 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+动态配置表单解决方案，支持文本，输入框，选择器，日期选择，输入限制与校验。
                        DESC
 
   s.homepage         = 'https://github.com/MaricleZhang/LMForm'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'MaricleZhang' => 'jian.zhang@qianli.com' }
+  s.author           = { 'MaricleZhang' => 'maricle.zhang@gmail.com' }
   s.source           = { :git => 'https://github.com/MaricleZhang/LMForm.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'LMForm/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'LMForm' => ['LMForm/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.resource_bundles = {
+     'LMForm' => ['LMForm/Assets/*.png']
+  }
+ 
+  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.dependency 'IQKeyboardManager', '~> 6.3.0'
 end

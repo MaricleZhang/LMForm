@@ -1,0 +1,23 @@
+PODS:
+  - IQKeyboardManager (6.3.0)
+  - LMForm (0.0.1):
+    - IQKeyboardManager
+
+DEPENDENCIES:
+  - LMForm (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IQKeyboardManager
+
+EXTERNAL SOURCES:
+  LMForm:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 2ca9d64893247556f53523dcd8d78641f0ba7c23
+  LMForm: ae93d4ff36cccb38e185b0c4c1c73eb4a051f22a
+
+PODFILE CHECKSUM: 30665296d78533f86ccc0ec63bd45b7e362cf7c0
+
+COCOAPODS: 1.5.3
