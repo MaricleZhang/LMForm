@@ -36,10 +36,10 @@
     [super layoutSubviews];
     
     [self.titleLabel sizeToFit];
-    self.titleLabel.x = QL_XX_6(24);
+    self.titleLabel.x = LM_XX_6(24);
     self.titleLabel.centerY = self.contentView.height / 2;
     
-    self.line.frame = CGRectMake(QL_XX_6(24), self.contentView.height - 1, self.contentView.width - QL_XX_6(24) - QL_XX_6(15), 1);
+    self.line.frame = CGRectMake(LM_XX_6(24), self.contentView.height - 1, self.contentView.width - LM_XX_6(24) - LM_XX_6(15), 1);
 }
 
 #pragma mark - Setter/Getter
@@ -49,8 +49,8 @@
     if (!_titleLabel)
     {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.textColor = QL_UIColorFromHEX(0x666666);
-        _titleLabel.font = [UIFont systemFontOfSize:QL_XX_6(14)];
+        _titleLabel.textColor = LM_UIColorFromHEX(0x666666);
+        _titleLabel.font = [UIFont systemFontOfSize:LM_XX_6(14)];
     }
     return _titleLabel;
 }
@@ -60,7 +60,7 @@
     if (!_line)
     {
         _line = [[UIView alloc] init];
-        _line.backgroundColor = QL_UIColorFromHEX(0xF4F4F4);
+        _line.backgroundColor = LM_UIColorFromHEX(0xF4F4F4);
     }
     return _line;
 }

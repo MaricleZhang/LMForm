@@ -63,7 +63,7 @@
 {
     LMFormModel *model = [self.dataArray objectAtIndex:indexPath.row];
     
-    return (model.height > 0) ? model.height : QL_XX_6(50);
+    return (model.height > 0) ? model.height : LM_XX_6(50);
 }
 
 - (void)registerClassWithDataArray:(NSArray<LMFormModel *> *)dataArray

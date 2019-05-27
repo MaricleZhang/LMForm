@@ -28,10 +28,10 @@
     [super layoutSubviews];
     
     [self.titleLabel sizeToFit];
-    self.titleLabel.x = QL_XX_6(24);
-    self.titleLabel.y = QL_XX_6(21);
+    self.titleLabel.x = LM_XX_6(24);
+    self.titleLabel.y = LM_XX_6(21);
     
-    self.textField.frame = CGRectMake(QL_XX_6(24) , QL_XX_6(40), Screen_Width / 2, QL_XX_6(40));
+    self.textField.frame = CGRectMake(LM_XX_6(24) , LM_XX_6(40), LM_Screen_Width / 2, LM_XX_6(40));
 }
 
 #pragma mark - Responce
@@ -52,9 +52,9 @@
     if (!_textField)
     {
         _textField = [[UITextField alloc] init];
-        _textField.textColor = QL_UIColorFromHEX(0x333333);
-        _textField.font = [UIFont systemFontOfSize:QL_XX_6(14)];
-        [_textField setValue:QL_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
+        _textField.textColor = LM_UIColorFromHEX(0x333333);
+        _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
+        [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
         [_textField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;

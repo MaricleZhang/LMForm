@@ -12,6 +12,7 @@
 
 @protocol LMFormCellProtocol <NSObject>
 
+/** 根据model 配置对应的cell  */
 - (void)configModel:(LMFormModel *)model;
 
 

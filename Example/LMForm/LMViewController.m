@@ -50,7 +50,7 @@
     model0.key = @"name";
     model0.value = @"Tom";
     model0.isRequire = YES;
-    model0.height = QL_XX_6(50);
+    model0.height = LM_XX_6(50);
     [self.dataArray addObject:model0];
     
     // 输入框
@@ -61,7 +61,7 @@
     model1.value = @"";
     model1.placeholder = @"请输入手机号";
     model1.isRequire = YES;
-    model1.height = QL_XX_6(50);
+    model1.height = LM_XX_6(50);
     model1.message = @"请输入正确的手机号";
     model1.limitLength = 11;
     model1.regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -75,7 +75,7 @@
     model2.value = @"";
     model2.placeholder = @"请选择性别";
     model2.isRequire = YES;
-    model2.height = QL_XX_6(50);
+    model2.height = LM_XX_6(50);
     model2.message = @"请选择性别";
     model2.selectList = @[@"男",@"女"];
     
@@ -89,8 +89,10 @@
     model3.value = @"";
     model3.placeholder = @"请选择出生日期";
     model3.isRequire = YES;
-    model3.height = QL_XX_6(50);
+    model3.height = LM_XX_6(50);
     model3.message = @"请选择出生日期";
+    model3.datePickerMode = UIDatePickerModeDate;
+    model3.dateFormat = @"yyyy";
     [self.dataArray addObject:model3];
     
     // 自定义cell

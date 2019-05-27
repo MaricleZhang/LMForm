@@ -35,9 +35,9 @@
 {
     [super layoutSubviews];
     
-    self.textField.frame = CGRectMake(Screen_Width - QL_XX_6(52) - Screen_Width / 2 , 0, Screen_Width / 2, self.contentView.height);
+    self.textField.frame = CGRectMake(LM_Screen_Width - LM_XX_6(52) - LM_Screen_Width / 2 , 0, LM_Screen_Width / 2, self.contentView.height);
     
-    self.arrowImgView.frame = CGRectMake(Screen_Width - QL_XX_6(24) - QL_XX_6(24), 0, QL_XX_6(24), QL_XX_6(24));
+    self.arrowImgView.frame = CGRectMake(LM_Screen_Width - LM_XX_6(24) - LM_XX_6(24), 0, LM_XX_6(24), LM_XX_6(24));
     self.arrowImgView.centerY = self.contentView.height / 2;
 }
 
@@ -69,10 +69,10 @@
     {
         _textField = [[UITextField alloc] init];
         _textField.userInteractionEnabled = NO;
-        _textField.textColor = QL_UIColorFromHEX(0x333333);
-        _textField.font = [UIFont systemFontOfSize:QL_XX_6(14)];
+        _textField.textColor = LM_UIColorFromHEX(0x333333);
+        _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
         _textField.textAlignment = NSTextAlignmentRight;
-        [_textField setValue:QL_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
+        [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
     }
     return _textField;
 }

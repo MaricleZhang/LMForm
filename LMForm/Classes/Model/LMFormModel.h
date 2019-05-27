@@ -35,6 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 // LMFormSelectorCell
 @property (nonatomic, copy) NSArray<NSString *> *selectList;
 
+// LMDateCell
+@property (nonatomic, assign) UIDatePickerMode datePickerMode;
+@property (nonatomic, copy) NSString *dateFormat;//日期格式，eg:yyyy-MM-dd,MM/dd
+
 // LMAddressCell
 @property (nonatomic, copy) LMAddressCellDidSelectedBlock addressCellDidSelectedBlock;
 @property (nonatomic, assign) NSString *addressType;

@@ -53,7 +53,7 @@
 
 - (void)createUI
 {
-    self.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
+    self.frame = CGRectMake(0, 0, LM_Screen_Width, LM_Screen_Height);
     self.backgroundColor = [UIColor clearColor];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeSelfView)];
@@ -111,8 +111,8 @@
 {
     if (!_popupView)
     {
-        _popupView = [[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height, Screen_Width, kPopupViewHeight)];
-        _popupView.backgroundColor = QL_UIColorFromHEX(0xf9f9fa);
+        _popupView = [[UIView alloc] initWithFrame:CGRectMake(0, LM_Screen_Height, LM_Screen_Width, kPopupViewHeight)];
+        _popupView.backgroundColor = LM_UIColorFromHEX(0xf9f9fa);
     }
     return _popupView;
 }
@@ -122,7 +122,7 @@
     if (!_topView)
     {
         _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, kTopViewHeight)];
-        _topView.backgroundColor = QL_UIColorFromHEX(0xFDFDFD);
+        _topView.backgroundColor = LM_UIColorFromHEX(0xFDFDFD);
     }
     return _topView;
 }
@@ -134,7 +134,7 @@
         _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kButtonWidth, kTopViewHeight)];
         _cancelButton.backgroundColor = [UIColor clearColor];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-        [_cancelButton setTitleColor:QL_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:LM_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [_cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -148,7 +148,7 @@
         _confirmButton = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - kButtonWidth), 0, kButtonWidth, kTopViewHeight)];
         _confirmButton.backgroundColor = [UIColor clearColor];
         [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
-        [_confirmButton setTitleColor:QL_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
+        [_confirmButton setTitleColor:LM_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
         _confirmButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [_confirmButton addTarget:self action:@selector(confirmButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -160,7 +160,7 @@
     if (!_titleLabel)
     {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kButtonWidth + 5, 0, self.frame.size.width - 2 * (kButtonWidth + 5) , kTopViewHeight)];
-        _titleLabel.textColor = QL_UIColorFromHEX(0x464646);
+        _titleLabel.textColor = LM_UIColorFromHEX(0x464646);
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -172,7 +172,7 @@
     if (!_line)
     {
         _line = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight - 0.5, self.frame.size.width, 0.5)];
-        _line.backgroundColor = QL_UIColorFromHEX(0xf1f1f1);
+        _line.backgroundColor = LM_UIColorFromHEX(0xf1f1f1);
     }
     return _line;
 }

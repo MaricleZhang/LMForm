@@ -27,7 +27,7 @@
 {
     [super layoutSubviews];
     
-    self.subLabel.frame = CGRectMake(Screen_Width - QL_XX_6(24) - Screen_Width / 2, 0, Screen_Width / 2, self.contentView.height);
+    self.subLabel.frame = CGRectMake(LM_Screen_Width - LM_XX_6(24) - LM_Screen_Width / 2, 0, LM_Screen_Width / 2, self.contentView.height);
 }
 
 #pragma mark - Setter/Getter
@@ -38,8 +38,8 @@
     {
         _subLabel = [[UILabel alloc] init];
         _subLabel.textAlignment = NSTextAlignmentRight;
-        _subLabel.textColor = QL_UIColorFromHEX(0x333333);
-        _subLabel.font = [UIFont systemFontOfSize:QL_XX_6(14)];
+        _subLabel.textColor = LM_UIColorFromHEX(0x333333);
+        _subLabel.font = [UIFont systemFontOfSize:LM_XX_6(14)];
     }
     return _subLabel;
 }

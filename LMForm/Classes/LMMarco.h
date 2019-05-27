@@ -9,19 +9,19 @@
 #ifndef LMMarco_h
 #define LMMarco_h
 
-#define Screen_Width    ([UIScreen mainScreen].bounds.size.width)
-#define Screen_Height   ([UIScreen mainScreen].bounds.size.height)
+#define LM_Screen_Width    ([UIScreen mainScreen].bounds.size.width)
+#define LM_Screen_Height   ([UIScreen mainScreen].bounds.size.height)
 
 // 物理点 为单位
-#define QL_XX_6(value)     (1.0 * (value) * Screen_Width / 375.0)
+#define LM_XX_6(value)     (1.0 * (value) * LM_Screen_Width / 375.0)
 
-#define QL_UIColorFromHEX_Alpha(rgbValue, a) \
+#define LM_UIColorFromHEX_Alpha(rgbValue, a) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:(a)]
 
-#define QL_UIColorFromHEX(rgbValue)     QL_UIColorFromHEX_Alpha(rgbValue, 1.0)
+#define LM_UIColorFromHEX(rgbValue)     LM_UIColorFromHEX_Alpha(rgbValue, 1.0)
 
 /**
  合成弱引用/强引用

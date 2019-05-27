@@ -28,7 +28,7 @@
 {
     [super layoutSubviews];
     
-    self.textField.frame = CGRectMake(Screen_Width - QL_XX_6(24) - Screen_Width / 2 , 0, Screen_Width / 2, self.contentView.height);
+    self.textField.frame = CGRectMake(LM_Screen_Width - LM_XX_6(24) - LM_Screen_Width / 2 , 0, LM_Screen_Width / 2, self.contentView.height);
 }
 
 #pragma mark - Responce
@@ -50,9 +50,9 @@
     {
         _textField = [[UITextField alloc] init];
         _textField.textAlignment = NSTextAlignmentRight;
-        _textField.textColor = QL_UIColorFromHEX(0x333333);
-        _textField.font = [UIFont systemFontOfSize:QL_XX_6(14)];
-         [_textField setValue:QL_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
+        _textField.textColor = LM_UIColorFromHEX(0x333333);
+        _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
+         [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
         [_textField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;
