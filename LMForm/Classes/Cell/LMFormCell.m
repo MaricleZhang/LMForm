@@ -1,6 +1,6 @@
 //
 //  LMFormCell.m
-//  LoanMarket
+//  LMForm
 //
 //  Created by Zhang on 2019/4/30.
 //  Copyright © 2019 Maricle. All rights reserved.
@@ -101,6 +101,7 @@
 {
     self.model = model;
     
+    // data
     self.titleLabel.text = model.title;
     self.textField.placeholder = model.placeholder;
     self.textField.text = model.value;
@@ -109,6 +110,7 @@
         self.textField.limitLength = @(model.limitLength);
     }
     
+    // UI
     self.line.hidden = model.hiddenLine;
     self.line.backgroundColor = LM_ObjDefault(model.separatorLineColor, LM_UIColorFromHEX(0xF4F4F4));
     self.titleLabel.textColor = LM_ObjDefault(model.leftTextColor, LM_UIColorFromHEX(0x666666));
