@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) LMFormTableView *tableView;
 @property (nonatomic, copy) NSMutableArray<LMFormModel *> *dataArray;
+
 @end
 
 @implementation LMViewController
@@ -72,10 +73,19 @@
     model.height = LM_XX_6(50);
     model.message = @"请输入正确的手机号";
     model.limitLength = 11;
+    model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
+        if (model.value.length < 5)
+        {
+            [LMWindowHud showHud:model.message];
+            return NO;
+        }
+        return YES;
+    };
+//    model.validate = self;
     
-    LMFormValidator *validator = [[LMFormValidator alloc] init];
-    validator.regex = @"^(1[3-9])\\d{9}$";
-    model.validator = validator;
+//    LMFormValidator *validator = [[LMFormValidator alloc] init];
+//    validator.regex = @"^(1[3-9])\\d{9}$";
+//    model.validator = validator;
     
     return model;
 }
@@ -127,6 +137,14 @@
     model.isRequire = YES;
     model.height = LM_XX_6(68);
     model.message = @"详细地址不得少于5位";
+    model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
+        if (model.value.length < 5)
+        {
+            [LMWindowHud showHud:model.message];
+            return NO;
+        }
+        return YES;
+    };
     
     return model;
 }
@@ -146,21 +164,42 @@
 
 - (void)tapSaveAction
 {
-    [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"obj.value:%@",obj.value);
-
-        if (obj.isRequire && obj.validator && ![obj.validator isValidate:obj.value])
+    @weakify(self)
+    for (LMFormModel * _Nonnull obj in self.dataArray)
+    {
+        if (obj.validateBlock)
         {
-            [LMWindowHud showHud:obj.message];
-            *stop = YES;
-            return;
+            if (!obj.validateBlock(obj)) return;
         }
+    }
+    [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+//        if (obj.validateBlock)
+//        {
+//           BOOL isValidate = obj.validateBlock(obj);
+//        }
+//        @strongify(self)
+//        NSLog(@"obj.value:%@",obj.value);
+//
+//        if (obj.isRequire && obj.validator && ![obj.validator isValidate:obj.value])
+//        {
+//            [LMWindowHud showHud:obj.message];
+//            *stop = YES;
+//            return;
+//        }
+//
+//        if (obj.isRequire && !obj.validator && (obj.value.length == 0 || obj.value == nil))
+//        {
+//            [LMWindowHud showHud:obj.message];
+//            *stop = YES;
+//            return;
+//        }
 
-        if (obj.isRequire && !obj.validator && (obj.value.length == 0 || obj.value == nil))
+        if ([obj.validate conformsToProtocol:@protocol(LMFormModelValidateProtocol)])
         {
-            [LMWindowHud showHud:obj.message];
-            *stop = YES;
-            return;
+            [obj.validate isValidateFormModel:obj];
+//            [obj.validate performSelector:@selector(isValidateFormModel:)];
+//            [self loadAdressInput];
         }
     }];
 }
@@ -171,7 +210,7 @@
 {
     if (!_tableView)
     {
-        _tableView = [[LMFormTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[LMFormTableView alloc] init];
         _tableView.frame = self.view.frame;
     }
     return _tableView;

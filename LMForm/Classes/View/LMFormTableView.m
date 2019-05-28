@@ -21,15 +21,40 @@
     self = [super initWithFrame:frame style:style];
     if (self)
     {
-        self.delegate = self;
-        self.dataSource = self;
-        self.backgroundColor = [UIColor whiteColor];
-        self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.showsVerticalScrollIndicator = NO;
-        
-        [self registerClass:[LMFormCell class] forCellReuseIdentifier:NSStringFromClass([LMFormCell class])];
+        [self initData];
     }
     return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        [self initData];
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        [self initData];
+    }
+    return self;
+}
+
+- (void)initData
+{
+    self.delegate = self;
+    self.dataSource = self;
+    self.backgroundColor = [UIColor whiteColor];
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.showsVerticalScrollIndicator = NO;
+    
+    [self registerClass:[LMFormCell class] forCellReuseIdentifier:NSStringFromClass([LMFormCell class])];
 }
 
 #pragma mark - UITableViewSource

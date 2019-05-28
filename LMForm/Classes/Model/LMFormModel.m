@@ -13,15 +13,15 @@
 
 - (BOOL)isValidate
 {
-    if (self.isRequire && self.regex && [LMFormValidator isValidate:self.value])
-    {
-        return YES;
-    }
-    
-    if (self.isRequire && !self.regex && (self.value.length == 0 || self.value == nil))
-    {
-        return YES;
-    }
+//    if (self.isRequire && self.regex && [LMFormValidator isValidate:self.value])
+//    {
+//        return YES;
+//    }
+//    
+//    if (self.isRequire && !self.regex && (self.value.length == 0 || self.value == nil))
+//    {
+//        return YES;
+//    }
     return NO;
 }
 @end
