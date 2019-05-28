@@ -7,11 +7,8 @@
 //
 
 #import "LMViewController.h"
-#import "LMFormTableView.h"
-#import "LMMarco.h"
 #import "LMForm.h"
 #import "LMCustomCell.h"
-#import "LMFormTypeManager.h"
 #import "LMWindowHud.h"
 
 #define kCustomCell  @"custom"
@@ -150,20 +147,21 @@
 - (void)tapSaveAction
 {
     [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"obj.value:%@",obj.value);
+
         if (obj.isRequire && obj.validator && ![obj.validator isValidate:obj.value])
         {
             [LMWindowHud showHud:obj.message];
             *stop = YES;
             return;
         }
-        
+
         if (obj.isRequire && !obj.validator && (obj.value.length == 0 || obj.value == nil))
         {
             [LMWindowHud showHud:obj.message];
             *stop = YES;
             return;
         }
-       
     }];
 }
 

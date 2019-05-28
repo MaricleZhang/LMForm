@@ -12,5 +12,7 @@
 #import "LMFormTypeManager.h"
 #import "LMFormCellProtocol.h"
 #import "LMFormModel.h"
+#import "LMMarco.h"
+#import "LMFormTableView.h"
 
 #endif /* Header_h */

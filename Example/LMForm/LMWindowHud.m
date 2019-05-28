@@ -9,29 +9,33 @@
 #import "LMWindowHud.h"
 #import "UIView+Extension.h"
 
+UILabel *hudLabel;
+
 @implementation LMWindowHud
 
 + (void)showHud:(NSString *)text
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = text;
-    label.font = [UIFont systemFontOfSize:14];
-    label.layer.cornerRadius = 3;
-    label.layer.masksToBounds = YES;
+    if (hudLabel) return;
+    hudLabel = [[UILabel alloc] init];
+    hudLabel.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
+    hudLabel.textAlignment = NSTextAlignmentCenter;
+    hudLabel.textColor = [UIColor whiteColor];
+    hudLabel.text = text;
+    hudLabel.font = [UIFont systemFontOfSize:14];
+    hudLabel.layer.cornerRadius = 3;
+    hudLabel.layer.masksToBounds = YES;
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:label];
+    [window addSubview:hudLabel];
     
-    [label sizeToFit];
-    label.width += 20;
-    label.height += 10;
+    [hudLabel sizeToFit];
+    hudLabel.width += 20;
+    hudLabel.height += 10;
     
-    label.center = window.center;
+    hudLabel.center = window.center;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [label removeFromSuperview];
+        [hudLabel removeFromSuperview];
+        hudLabel = nil;
     });
 }
 
