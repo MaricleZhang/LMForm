@@ -12,11 +12,6 @@
 
 @class LMFormModel;
 
-@protocol LMFormModelValidateProtocol <NSObject>
-
-- (BOOL)isValidateFormModel:(LMFormModel *_Nullable)model;
-
-@end
 typedef void(^LMValueDidChangedBlock)(NSString * _Nullable vlaue);
 typedef void(^LMAddressCellDidSelectedBlock)(NSString * _Nullable vlaue,NSString * _Nullable key);
 typedef BOOL(^LMValidateBlock)(LMFormModel * _Nullable model);
@@ -33,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *formType;
 @property (nonatomic, strong) Class cellClass;// 对应的cell class
 @property (nonatomic, copy) LMValueDidChangedBlock valueDidChangedBlock; //输入完成或者选择完成回调
-@property (nonatomic, weak) id<LMFormModelValidateProtocol> validate;
 @property (nonatomic, copy) LMValidateBlock validateBlock;
 
 /** UI 样式，可根据需求更改 */

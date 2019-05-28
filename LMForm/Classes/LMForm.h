@@ -14,5 +14,6 @@
 #import "LMFormModel.h"
 #import "LMMarco.h"
 #import "LMFormTableView.h"
+#import "LMFormValidator.h"
 
 #endif /* Header_h */

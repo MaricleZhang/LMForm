@@ -165,13 +165,7 @@
 - (void)tapSaveAction
 {
     @weakify(self)
-    for (LMFormModel * _Nonnull obj in self.dataArray)
-    {
-        if (obj.validateBlock)
-        {
-            if (!obj.validateBlock(obj)) return;
-        }
-    }
+    [LMFormValidator validateDataArray:self.dataArray];
     [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
 //        if (obj.validateBlock)
@@ -195,12 +189,6 @@
 //            return;
 //        }
 
-        if ([obj.validate conformsToProtocol:@protocol(LMFormModelValidateProtocol)])
-        {
-            [obj.validate isValidateFormModel:obj];
-//            [obj.validate performSelector:@selector(isValidateFormModel:)];
-//            [self loadAdressInput];
-        }
     }];
 }
 

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class LMFormModel;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMFormValidator : NSObject
@@ -15,6 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *regex;
 
 - (BOOL)isValidate:(NSString *)value;
+
+
+/**
+ 对数据源校验
+
+ @param dataArray 数据源
+ @return 全部校验通过返回YES，否则返回NO。
+ */
++ (BOOL)validateDataArray:(NSArray<LMFormModel *> *)dataArray;
 
 @end
 
