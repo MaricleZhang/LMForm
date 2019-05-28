@@ -128,7 +128,7 @@
     model.value = @"";
     model.placeholder = @"请输入详细地址";
     model.isRequire = YES;
-    model.height = LM_XX_6(78);
+    model.height = LM_XX_6(68);
     model.message = @"详细地址不得少于5位";
     
     return model;

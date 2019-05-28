@@ -14,11 +14,9 @@
 {
     [super layoutSubviews];
     
-    [self.titleLabel sizeToFit];
-    self.titleLabel.x = LM_ObjDefault(self.model.margin, LM_DefautMargin);
-    self.titleLabel.y = LM_XX_6(21);
+    self.titleLabel.y = LM_XX_6(15);
     
-    self.textField.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin) , LM_XX_6(40), LM_Screen_Width - 2 * LM_ObjDefault(self.model.margin, LM_DefautMargin), LM_XX_6(40));
+    self.textField.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin) , LM_XX_6(30), LM_Screen_Width - 2 * LM_ObjDefault(self.model.margin, LM_DefautMargin), LM_XX_6(40));
 }
 
 #pragma mark - LMFormCellProtocol
