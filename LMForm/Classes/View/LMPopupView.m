@@ -8,9 +8,9 @@
 
 #import "LMPopupView.h"
 
-#define kPopupViewHeight 240
-#define kTopViewHeight   44
-#define kButtonWidth     65
+#define kLMPopupViewHeight 240
+#define kLMTopViewHeight   44
+#define kLMButtonWidth     65
 
 @interface LMPopupView ()
 
@@ -32,6 +32,7 @@
 + (void)showPopupViewWithPickView:(UIView *)pickView title:(NSString *)title confirmBlock:(LMPopupViewConfirmBlock)confirmBlock cancelBlock:(LMPopupViewCancelBlock)cancelBlock
 {
     LMPopupView *popview = [[LMPopupView alloc] initPopupViewWithPickView:pickView title:title confirmBlock:confirmBlock cancelBlock:confirmBlock];
+    [popview show];
 }
 
 - (instancetype)initPopupViewWithPickView:(UIView *)pickView title:(NSString *)title confirmBlock:(LMPopupViewConfirmBlock)confirmBlock cancelBlock:(LMPopupViewCancelBlock)cancelBlock
@@ -45,7 +46,7 @@
         [self createUI];
         [self.popupView addSubview:pickView];
         self.titleLabel.text = title;
-        pickView.frame = CGRectMake(0, kTopViewHeight, self.frame.size.width, kPopupViewHeight - kTopViewHeight);
+        pickView.frame = CGRectMake(0, kLMTopViewHeight, self.frame.size.width, kLMPopupViewHeight - kLMTopViewHeight);
         [[UIApplication sharedApplication].keyWindow endEditing:YES];
     }
     return self;
@@ -67,13 +68,11 @@
     [self.topView addSubview:self.line];
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
+- (void)show
 {
-    [super willMoveToSuperview:newSuperview];
-    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.popupView.frame;
-        rect.origin.y -= kPopupViewHeight;
+        rect.origin.y -= kLMPopupViewHeight;
         self.popupView.frame = rect;
     }];
 }
@@ -82,7 +81,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.popupView.frame;
-        rect.origin.y += kPopupViewHeight;
+        rect.origin.y += kLMPopupViewHeight;
         self.popupView.frame = rect;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
@@ -111,7 +110,7 @@
 {
     if (!_popupView)
     {
-        _popupView = [[UIView alloc] initWithFrame:CGRectMake(0, LM_Screen_Height, LM_Screen_Width, kPopupViewHeight)];
+        _popupView = [[UIView alloc] initWithFrame:CGRectMake(0, LM_Screen_Height, LM_Screen_Width, kLMPopupViewHeight)];
         _popupView.backgroundColor = LM_UIColorFromHEX(0xf9f9fa);
     }
     return _popupView;
@@ -121,7 +120,7 @@
 {
     if (!_topView)
     {
-        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, kTopViewHeight)];
+        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, kLMTopViewHeight)];
         _topView.backgroundColor = LM_UIColorFromHEX(0xFDFDFD);
     }
     return _topView;
@@ -131,7 +130,7 @@
 {
     if (!_cancelButton)
     {
-        _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kButtonWidth, kTopViewHeight)];
+        _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLMButtonWidth, kLMTopViewHeight)];
         _cancelButton.backgroundColor = [UIColor clearColor];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelButton setTitleColor:LM_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
@@ -145,7 +144,7 @@
 {
     if (!_confirmButton)
     {
-        _confirmButton = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - kButtonWidth), 0, kButtonWidth, kTopViewHeight)];
+        _confirmButton = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - kLMButtonWidth), 0, kLMButtonWidth, kLMTopViewHeight)];
         _confirmButton.backgroundColor = [UIColor clearColor];
         [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
         [_confirmButton setTitleColor:LM_UIColorFromHEX(0x464646) forState:UIControlStateNormal];
@@ -159,7 +158,7 @@
 {
     if (!_titleLabel)
     {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kButtonWidth + 5, 0, self.frame.size.width - 2 * (kButtonWidth + 5) , kTopViewHeight)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kLMButtonWidth + 5, 0, self.frame.size.width - 2 * (kLMButtonWidth + 5) , kLMTopViewHeight)];
         _titleLabel.textColor = LM_UIColorFromHEX(0x464646);
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -171,7 +170,7 @@
 {
     if (!_line)
     {
-        _line = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight - 0.5, self.frame.size.width, 0.5)];
+        _line = [[UIView alloc] initWithFrame:CGRectMake(0, kLMTopViewHeight - 0.5, self.frame.size.width, 0.5)];
         _line.backgroundColor = LM_UIColorFromHEX(0xf1f1f1);
     }
     return _line;
