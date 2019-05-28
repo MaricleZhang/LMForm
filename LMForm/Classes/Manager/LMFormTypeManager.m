@@ -8,12 +8,12 @@
 
 #import "LMFormTypeManager.h"
 #import "LMFormInputCell.h"
-#import "LMFormTextCell.h"
 #import "LMFormSelectorCell.h"
 #import "LMFormAddressInputCell.h"
 #import "LMDateCell.h"
 #import "LMAddressCell.h"
 #import "IQKeyboardManager.h"
+#import "LMFormAddressInputCell.h"
 
 @interface LMFormTypeManager ()
 
@@ -37,7 +37,7 @@
     self = [super init];
     if (self)
     {
-        [self initAllRegister];
+        [self registerAllCell];
         /*** 键盘 ***/
         [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
         [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
@@ -45,13 +45,14 @@
     return self;
 }
 
-- (void)initAllRegister
+- (void)registerAllCell
 {
-    [self.keyCellTypes setObject:[LMFormTextCell class] forKey:kFormTypeText];
+    [self.keyCellTypes setObject:[LMFormCell class] forKey:kFormTypeText];
     [self.keyCellTypes setObject:[LMFormInputCell class] forKey:kFormTypeInput];
     [self.keyCellTypes setObject:[LMFormSelectorCell class] forKey:kFormTypeSelector];
     [self.keyCellTypes setObject:[LMDateCell class] forKey:kFormTypeDate];
     [self.keyCellTypes setObject:[LMAddressCell class] forKey:kFormTypeAddress];
+    [self.keyCellTypes setObject:[LMFormAddressInputCell class] forKey:kFormTypeAddressInput];
 }
 
 - (void)registerCellClass:(Class)cls forKey:(NSString *)key

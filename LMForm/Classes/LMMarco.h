@@ -23,6 +23,11 @@ alpha:(a)]
 
 #define LM_UIColorFromHEX(rgbValue)     LM_UIColorFromHEX_Alpha(rgbValue, 1.0)
 
+#define LM_DefautMargin                 LM_XX_6(20)
+#define LM_ObjDefault(obj,default)      (obj ?: default)
+#define LM_RightArrowWidth              LM_XX_6(24)
+#define LM_DefaultSpace                 LM_XX_6(10)
+
 /**
  合成弱引用/强引用
  

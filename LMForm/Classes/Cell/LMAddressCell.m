@@ -11,7 +11,6 @@
 
 @interface LMAddressCell ()
 
-@property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIImageView *arrowImgView;
 
 @end
@@ -22,7 +21,6 @@
 {
     [super createUI];
     
-    [self.contentView addSubview:self.textField];
     [self.contentView addSubview:self.arrowImgView];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSelectedAction)];
@@ -34,7 +32,7 @@
     [super layoutSubviews];
     
     self.textField.frame = CGRectMake(LM_Screen_Width - LM_XX_6(52) - LM_Screen_Width / 2 , 0, LM_Screen_Width / 2, self.contentView.height);
-    self.arrowImgView.frame = CGRectMake(LM_Screen_Width - LM_XX_6(24) - LM_XX_6(24), 0, LM_XX_6(24), LM_XX_6(24));
+    self.arrowImgView.frame = CGRectMake(LM_Screen_Width - LM_DefautMargin - LM_DefautMargin, 0, LM_DefautMargin, LM_DefautMargin);
     self.arrowImgView.centerY = self.contentView.height / 2;
 }
 
@@ -70,20 +68,6 @@
 
 #pragma mark - Setter/Getter
 
-- (UITextField *)textField
-{
-    if (!_textField)
-    {
-        _textField = [[UITextField alloc] init];
-        _textField.userInteractionEnabled = NO;
-        _textField.textColor = LM_UIColorFromHEX(0x333333);
-        _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
-        _textField.textAlignment = NSTextAlignmentRight;
-        [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
-    }
-    return _textField;
-}
-
 - (UIImageView *)arrowImgView
 {
     if (!_arrowImgView)
@@ -92,6 +76,8 @@
     }
     return _arrowImgView;
 }
+
+#pragma mark - LMFormCellProtocol
 
 - (void)configModel:(LMFormModel *)model
 {

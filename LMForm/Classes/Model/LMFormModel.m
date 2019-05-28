@@ -10,8 +10,4 @@
 
 @implementation LMFormModel
 
-- (BOOL)isValidate
-{
-    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", self.regex] evaluateWithObject:[self.value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-}
 @end

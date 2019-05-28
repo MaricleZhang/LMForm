@@ -7,6 +7,7 @@
 //
 
 #import "LMFormCell.h"
+#import "UITextField+LimitLength.h"
 
 @interface LMFormCell ()
 
@@ -28,6 +29,7 @@
 - (void)createUI
 {
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.textField];
     [self.contentView addSubview:self.line];
 }
 
@@ -36,10 +38,23 @@
     [super layoutSubviews];
     
     [self.titleLabel sizeToFit];
-    self.titleLabel.x = LM_XX_6(24);
+    self.titleLabel.x = LM_ObjDefault(self.model.margin, LM_DefautMargin);
     self.titleLabel.centerY = self.contentView.height / 2;
     
-    self.line.frame = CGRectMake(LM_XX_6(24), self.contentView.height - 1, self.contentView.width - LM_XX_6(24) - LM_XX_6(15), 1);
+    self.textField.frame = CGRectMake(self.titleLabel.maxX + LM_DefaultSpace , 0, LM_Screen_Width - self.titleLabel.maxX - LM_ObjDefault(self.model.margin, LM_DefautMargin) - LM_DefaultSpace , self.contentView.height);
+
+    self.line.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin), self.contentView.height - 1, self.contentView.width - LM_ObjDefault(self.model.margin, LM_DefautMargin) * 2, 1);
+}
+
+#pragma mark - Responce
+
+- (void)textDidChanged:(UITextField *)textField
+{
+    self.model.value = textField.text;
+    if (self.model.valueDidChangedBlock)
+    {
+        self.model.valueDidChangedBlock(textField.text);
+    }
 }
 
 #pragma mark - Setter/Getter
@@ -55,6 +70,21 @@
     return _titleLabel;
 }
 
+- (UITextField *)textField
+{
+    if (!_textField)
+    {
+        _textField = [[UITextField alloc] init];
+        _textField.userInteractionEnabled = NO;
+        _textField.textAlignment = NSTextAlignmentRight;
+        _textField.textColor = LM_UIColorFromHEX(0x333333);
+        _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
+        [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
+        [_textField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _textField;
+}
+
 - (UIView *)line
 {
     if (!_line)
@@ -65,13 +95,23 @@
     return _line;
 }
 
+#pragma mark - LMFormCellProtocol
+
 - (void)configModel:(LMFormModel *)model
 {
     self.model = model;
     
     self.titleLabel.text = model.title;
+    self.textField.placeholder = model.placeholder;
+    self.textField.text = model.value;
+    if (model.limitLength)
+    {
+        self.textField.limitLength = @(model.limitLength);
+    }
+    
     self.line.hidden = model.hiddenLine;
+    self.line.backgroundColor = LM_ObjDefault(model.separatorLineColor, LM_UIColorFromHEX(0xF4F4F4));
+    self.titleLabel.textColor = LM_ObjDefault(model.leftTextColor, LM_UIColorFromHEX(0x666666));
 }
-
 
 @end

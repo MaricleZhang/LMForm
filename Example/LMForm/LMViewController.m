@@ -29,8 +29,15 @@
     [super viewDidLoad];
     
     [self createUI];
-    
-    [self loadData];
+
+    [self.dataArray addObject:[self loadText]];
+    [self.dataArray addObject:[self loadInput]];
+    [self.dataArray addObject:[self loadSelector]];
+    [self.dataArray addObject:[self loadDateSelector]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadCustom]];
+
+    self.tableView.dataArray = self.dataArray;
 }
 
 - (void)createUI
@@ -41,68 +48,101 @@
     [self.view addSubview:self.tableView];
 }
 
-- (void)loadData
+// 不可编辑文本
+- (LMFormModel *)loadText
 {
-    // 不可编辑文本
-    LMFormModel *model0 = [LMFormModel new];
-    model0.formType = kFormTypeText;
-    model0.title = @"姓名";
-    model0.key = @"name";
-    model0.value = @"Tom";
-    model0.isRequire = YES;
-    model0.height = LM_XX_6(50);
-    [self.dataArray addObject:model0];
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeText;
+    model.title = @"姓名";
+    model.key = @"name";
+    model.value = @"Tom";
+    model.isRequire = YES;
+    model.height = LM_XX_6(50);
     
-    // 输入框
-    LMFormModel *model1 = [LMFormModel new];
-    model1.formType = kFormTypeInput;
-    model1.title = @"手机号";
-    model1.key = @"mobile";
-    model1.value = @"";
-    model1.placeholder = @"请输入手机号";
-    model1.isRequire = YES;
-    model1.height = LM_XX_6(50);
-    model1.message = @"请输入正确的手机号";
-    model1.limitLength = 11;
-    model1.regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    [self.dataArray addObject:model1];
-    
-    // 选择框
-    LMFormModel *model2 = [LMFormModel new];
-    model2.formType = kFormTypeSelector;
-    model2.title = @"性别";
-    model2.key = @"gender";
-    model2.value = @"";
-    model2.placeholder = @"请选择性别";
-    model2.isRequire = YES;
-    model2.height = LM_XX_6(50);
-    model2.message = @"请选择性别";
-    model2.selectList = @[@"男",@"女"];
-    
-    [self.dataArray addObject:model2];
-    
-    // 出生日期
-    LMFormModel *model3 = [LMFormModel new];
-    model3.formType = kFormTypeDate;
-    model3.title = @"出生日期";
-    model3.key = @"birth";
-    model3.value = @"";
-    model3.placeholder = @"请选择出生日期";
-    model3.isRequire = YES;
-    model3.height = LM_XX_6(50);
-    model3.message = @"请选择出生日期";
-    model3.datePickerMode = UIDatePickerModeDate;
-    model3.dateFormat = @"yyyy";
-    [self.dataArray addObject:model3];
-    
-    // 自定义cell
-    [[LMFormTypeManager manager] registerCellClass:[LMCustomCell class] forKey:kCustomCell];
-    LMFormModel *customModel = [LMFormModel new];
-    customModel.formType = kCustomCell;
-    customModel.title = @"custom cell";
-    [self.dataArray addObject:customModel];
+    return model;
+}
 
-    self.tableView.dataArray = self.dataArray;
+// 输入框
+- (LMFormModel *)loadInput
+{
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeInput;
+    model.title = @"手机号";
+    model.key = @"mobile";
+    model.value = @"";
+    model.placeholder = @"请输入手机号";
+    model.isRequire = YES;
+    model.height = LM_XX_6(50);
+    model.message = @"请输入正确的手机号";
+    model.limitLength = 11;
+    
+    LMFormValidator *validator = [[LMFormValidator alloc] init];
+    validator.regex = @"^(1[3-9])\\d{9}$";
+    model.validator = validator;
+    
+    return model;
+}
+
+// 选择器
+- (LMFormModel *)loadSelector
+{
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeSelector;
+    model.title = @"性别";
+    model.key = @"gender";
+    model.value = @"";
+    model.placeholder = @"请选择性别";
+    model.isRequire = YES;
+    model.height = LM_XX_6(50);
+    model.message = @"请选择性别";
+    model.selectList = @[@"男",@"女"];
+    
+    return model;
+}
+
+ // 日期选择器
+- (LMFormModel *)loadDateSelector
+{
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeDate;
+    model.title = @"出生日期";
+    model.key = @"birth";
+    model.value = @"";
+    model.placeholder = @"请选择出生日期";
+    model.isRequire = YES;
+    model.height = LM_XX_6(50);
+    model.message = @"请选择出生日期";
+    model.datePickerMode = UIDatePickerModeDate;
+    model.dateFormat = @"yyyy-MM-dd";
+    
+    return model;
+}
+
+// 地址输入框
+- (LMFormModel *)loadAdressInput
+{
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeAddressInput;
+    model.title = @"详细地址";
+    model.key = @"detailAdress";
+    model.value = @"";
+    model.placeholder = @"请输入详细地址";
+    model.isRequire = YES;
+    model.height = LM_XX_6(78);
+    model.message = @"详细地址不得少于5位";
+    
+    return model;
+}
+
+// 自定义cell
+- (LMFormModel *)loadCustom
+{
+    [[LMFormTypeManager manager] registerCellClass:[LMCustomCell class] forKey:kCustomCell];
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kCustomCell;
+    model.title = @"custom cell";
+    
+    return model;
 }
 
 #pragma mark - Responce
@@ -110,12 +150,20 @@
 - (void)tapSaveAction
 {
     [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.isRequire && obj.regex && ![obj isValidate])
+        if (obj.isRequire && obj.validator && ![obj.validator isValidate:obj.value])
         {
             [LMWindowHud showHud:obj.message];
             *stop = YES;
             return;
         }
+        
+        if (obj.isRequire && !obj.validator && (obj.value.length == 0 || obj.value == nil))
+        {
+            [LMWindowHud showHud:obj.message];
+            *stop = YES;
+            return;
+        }
+       
     }];
 }
 

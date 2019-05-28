@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) LMFormModel *model;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UITextField *textField;
 
 - (void)createUI;
 

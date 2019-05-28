@@ -1,7 +1,7 @@
 PODS:
   - IQKeyboardManager (6.3.0)
   - LMForm (0.0.1):
-    - IQKeyboardManager
+    - IQKeyboardManager (~> 6.3.0)
 
 DEPENDENCIES:
   - LMForm (from `../`)
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2ca9d64893247556f53523dcd8d78641f0ba7c23
-  LMForm: ae93d4ff36cccb38e185b0c4c1c73eb4a051f22a
+  LMForm: cd451a7c72845507af3883b5c54927717f069ef3
 
 PODFILE CHECKSUM: 30665296d78533f86ccc0ec63bd45b7e362cf7c0
 

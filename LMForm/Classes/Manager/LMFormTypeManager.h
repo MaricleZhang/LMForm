@@ -14,6 +14,7 @@
 #define kFormTypeSelector        @"selector"
 #define kFormTypeDate            @"date"
 #define kFormTypeAddress         @"address"
+#define kFormTypeAddressInput    @"addressInput"
 
 NS_ASSUME_NONNULL_BEGIN
 

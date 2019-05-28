@@ -10,5 +10,9 @@
 
 @implementation LMFormValidator
 
+- (BOOL)isValidate:(NSString *)value
+{
+    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", self.regex] evaluateWithObject:[value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+}
 
 @end

@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMFormValidator : NSObject
 
-@property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *regex;
+
+- (BOOL)isValidate:(NSString *)value;
 
 @end
 

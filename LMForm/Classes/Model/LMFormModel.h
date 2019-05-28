@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LMFormValidator.h"
 
 typedef void(^LMValueDidChangedBlock)(NSString *vlaue);
 typedef void(^LMAddressCellDidSelectedBlock)(NSString *vlaue,NSString *key);
@@ -19,18 +20,26 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *title;//左边标题
 @property (nonatomic, copy) NSString *key;//提交信息的入参
 @property (nonatomic, copy) NSString *value;//输入或者选择的值
-@property (nonatomic, assign) CGFloat height;//cell 高度
 @property (nonatomic, copy) NSString *message;//输入错误提示信息
 @property (nonatomic, assign) BOOL isRequire;//是否必须，默认NO
-@property (nonatomic, assign) BOOL hiddenLine;// 是否隐藏分割线，默认NO
 @property (nonatomic, copy) NSString *formType;
 @property (nonatomic, strong) Class cellClass;// 对应的cell class
 @property (nonatomic, copy) LMValueDidChangedBlock valueDidChangedBlock; //输入完成或者选择完成回调
+@property (nonatomic, strong) LMFormValidator *validator;
+
+/** UI 样式，可根据需求更改 */
+@property (nonatomic, assign) CGFloat height;//cell 高度
+@property (nonatomic, assign) BOOL hiddenLine;// 是否隐藏分割线，默认NO
+@property (nonatomic, assign) CGFloat margin;// 分割线与两边的边距,左右的边距相等。
+@property (nonatomic, strong) UIColor *separatorLineColor;// 分割线颜色
+@property (nonatomic, strong) UIColor *leftTextColor;// 左边文本颜色
+@property (nonatomic, strong) UIColor *rightTextColor;// 右边边文本颜色
+@property (nonatomic, strong) UIFont *leftLabelFont;// 左边标题字体
+@property (nonatomic, strong) UIFont *rightLabelFont;// 右边标题字体
 
 // LMFormInputCell
 @property (nonatomic, copy) NSString *placeholder; //textField placeholder
 @property (nonatomic, assign) NSInteger limitLength;//textfield 最大输入长度
-@property (nonatomic, copy) NSString *regex;
 
 // LMFormSelectorCell
 @property (nonatomic, copy) NSArray<NSString *> *selectList;
@@ -42,8 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 // LMAddressCell
 @property (nonatomic, copy) LMAddressCellDidSelectedBlock addressCellDidSelectedBlock;
 @property (nonatomic, assign) NSString *addressType;
-
-- (BOOL)isValidate;
 
 @end
 
