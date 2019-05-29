@@ -34,6 +34,6 @@ Pod::Spec.new do |s|
      'LMForm' => ['LMForm/Assets/*.png']
   }
  
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'LMForm/Classes/**/*.h'
   s.dependency 'IQKeyboardManager', '~> 6.3.0'
 end
