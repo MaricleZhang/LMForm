@@ -17,7 +17,7 @@ LMForm 是基于MVVM轻量级表单配置框架，把数据和事件整合为一
 5. 支持完全自定义cell类型。
 
 ## 3. 预览
-![form.gif](https://upload-images.jianshu.io/upload_images/2403444-a7c1029240a10f8d.gif?imageMogr2/auto-orient/strip)
+![form.gif](https://upload-images.jianshu.io/upload_images/2403444-17f9aee95b2e1792.gif?imageMogr2/auto-orient/strip)
 
 
 ## 4. 安装
