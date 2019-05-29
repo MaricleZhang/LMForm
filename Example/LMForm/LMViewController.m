@@ -33,7 +33,7 @@
     [self.dataArray addObject:[self loadSelector]];
     [self.dataArray addObject:[self loadDateSelector]];
     [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadCustom]];
+//    [self.dataArray addObject:[self loadCustom]];
 
     self.tableView.dataArray = self.dataArray;
 }
@@ -44,6 +44,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(tapSaveAction)];
     
     [self.view addSubview:self.tableView];
+    self.tableView.frame = self.view.frame;
 }
 
 // 不可编辑文本
@@ -54,7 +55,6 @@
     model.title = @"姓名";
     model.key = @"name";
     model.value = @"Tom";
-    model.isRequire = YES;
     model.height = LM_XX_6(50);
     
     return model;
@@ -69,24 +69,17 @@
     model.key = @"mobile";
     model.value = @"";
     model.placeholder = @"请输入手机号";
-    model.isRequire = YES;
     model.height = LM_XX_6(50);
     model.message = @"请输入正确的手机号";
     model.limitLength = 11;
     model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
-        if (model.value.length < 5)
+        if (![LMFormValidator isMobile:model.value])
         {
             [LMWindowHud showHud:model.message];
             return NO;
         }
         return YES;
     };
-//    model.validate = self;
-    
-//    LMFormValidator *validator = [[LMFormValidator alloc] init];
-//    validator.regex = @"^(1[3-9])\\d{9}$";
-//    model.validator = validator;
-    
     return model;
 }
 
@@ -99,10 +92,17 @@
     model.key = @"gender";
     model.value = @"";
     model.placeholder = @"请选择性别";
-    model.isRequire = YES;
     model.height = LM_XX_6(50);
     model.message = @"请选择性别";
     model.selectList = @[@"男",@"女"];
+    model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
+        if ([LMFormValidator isEmptyValue:model.value])
+        {
+            [LMWindowHud showHud:model.message];
+            return NO;
+        }
+        return YES;
+    };
     
     return model;
 }
@@ -116,7 +116,6 @@
     model.key = @"birth";
     model.value = @"";
     model.placeholder = @"请选择出生日期";
-    model.isRequire = YES;
     model.height = LM_XX_6(50);
     model.message = @"请选择出生日期";
     model.datePickerMode = UIDatePickerModeDate;
@@ -134,7 +133,6 @@
     model.key = @"detailAdress";
     model.value = @"";
     model.placeholder = @"请输入详细地址";
-    model.isRequire = YES;
     model.height = LM_XX_6(68);
     model.message = @"详细地址不得少于5位";
     model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
@@ -199,7 +197,6 @@
     if (!_tableView)
     {
         _tableView = [[LMFormTableView alloc] init];
-        _tableView.frame = self.view.frame;
     }
     return _tableView;
 }

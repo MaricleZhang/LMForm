@@ -11,9 +11,14 @@
 
 @implementation LMFormValidator
 
-- (BOOL)isValidate:(NSString *)value
++ (BOOL)validate:(NSString *)value WithRegex:(NSString *)regex
 {
-    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", self.regex] evaluateWithObject:[value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex] evaluateWithObject:[value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+}
+
++ (BOOL)isMobile:(NSString *)value
+{
+    return [self validate:value WithRegex:@"^(1[3-9])\\d{9}$"];
 }
 
 + (BOOL)validateDataArray:(NSArray<LMFormModel *> *)dataArray
@@ -28,4 +33,20 @@
     return YES;
 }
 
++ (BOOL)isEmptyValue:(NSString *)value
+{
+    if (!value) return YES;
+    if ([value isKindOfClass:[NSNull class]])
+    {
+        return YES;
+    }
+    if ([value isKindOfClass:[NSString class]])
+    {
+        if (value.length == 0)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
 @end
