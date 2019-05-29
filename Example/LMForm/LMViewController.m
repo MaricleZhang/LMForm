@@ -103,6 +103,9 @@
         }
         return YES;
     };
+    model.valueDidChangedBlock = ^(NSString * _Nullable vlaue) {
+        NSLog(@"vlaue:%@",vlaue);
+    };
     
     return model;
 }
@@ -162,32 +165,19 @@
 
 - (void)tapSaveAction
 {
-    @weakify(self)
-    [LMFormValidator validateDataArray:self.dataArray];
     [self.dataArray enumerateObjectsUsingBlock:^(LMFormModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-//        if (obj.validateBlock)
-//        {
-//           BOOL isValidate = obj.validateBlock(obj);
-//        }
-//        @strongify(self)
-//        NSLog(@"obj.value:%@",obj.value);
-//
-//        if (obj.isRequire && obj.validator && ![obj.validator isValidate:obj.value])
-//        {
-//            [LMWindowHud showHud:obj.message];
-//            *stop = YES;
-//            return;
-//        }
-//
-//        if (obj.isRequire && !obj.validator && (obj.value.length == 0 || obj.value == nil))
-//        {
-//            [LMWindowHud showHud:obj.message];
-//            *stop = YES;
-//            return;
-//        }
-
+        NSLog(@"%@:%@",obj.title,obj.value);
     }];
+    // 提交数据之前，对数据校验。如果不写则不校验。
+    BOOL isValidateSuccess = [LMFormValidator validateDataArray:self.dataArray];
+    if (isValidateSuccess)
+    {
+        NSLog(@"数据校验完成+++");
+    }
+    else
+    {
+        NSLog(@"数据校验失败---");
+    }
 }
 
 #pragma mark - Setter/Getter

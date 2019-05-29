@@ -24,10 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *key;//提交信息的入参
 @property (nonatomic, copy) NSString *value;//输入或者选择的值
 @property (nonatomic, copy) NSString *message;//输入错误提示信息
-//@property (nonatomic, assign) BOOL isRequire;//是否必须，默认NO
 @property (nonatomic, copy) NSString *formType;
 @property (nonatomic, strong) Class cellClass;// 对应的cell class
-@property (nonatomic, copy) LMValueDidChangedBlock valueDidChangedBlock; //输入完成或者选择完成回调
+@property (nonatomic, copy) LMValueDidChangedBlock valueDidChangedBlock; //输入或者选择完成回调
 @property (nonatomic, copy) LMValidateBlock validateBlock;
 
 /** UI 样式，可根据需求更改 */
