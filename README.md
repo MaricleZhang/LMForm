@@ -8,7 +8,17 @@
 
 LMForm 是基于MVVM轻量级表单配置框架，把数据和事件整合为一个model，实现cell与model的绑定，只需操作model便可配置表单。项目地址：https://github.com/MaricleZhang/LMForm.git
 
-## 2. 功能
+## 2. 结构
+
+![](https://user-gold-cdn.xitu.io/2019/5/31/16b0caa6a28e0d06?w=1290&h=540&f=png&s=57217)
+
+ * LMFormTypeManager : 负责管理类型与cellClass
+ * LMFormModel：cell 的配置信息，事件回调，数据校验回调
+ * Cell：遵循LMFormCellProtocol协议，实现不同的cell
+ * LMFormTableView ：注册cell类型，通过model，渲染表单
+ * LMFormValidator：负责对数据的校验
+
+## 3. 功能
 
 1. 支持动态配置model来实现表单。
 2. 支持配置文本、输入框、选择器、日期选择、地址选择等。
@@ -16,11 +26,11 @@ LMForm 是基于MVVM轻量级表单配置框架，把数据和事件整合为一
 4. 支持数据校验，可自定义校验格式。
 5. 支持完全自定义cell类型。
 
-## 3. 预览
-![form.gif](https://upload-images.jianshu.io/upload_images/2403444-17f9aee95b2e1792.gif?imageMogr2/auto-orient/strip)
+## 4. 预览
+![form.gif](https://user-gold-cdn.xitu.io/2019/5/29/16b039f90940dd5b?w=442&h=1000&f=gif&s=1500095)
 
 
-## 4. 安装
+## 5. 安装
  ### CocoaPods
 在 Podfile 中进行如下导入：
 ```
@@ -30,7 +40,7 @@ pod 'LMForm'
 ```
 pod install
 ```
-## 5. 使用
+## 6. 使用
 在项目中导入```#import "LMForm.h" ```
 
 ### 1. 配置数据源
@@ -104,7 +114,7 @@ pod install
 
 因为LMFormTableView中的cell与model绑定，只需遍历获取```value```即可。
 
-## 6. Cell 类型的介绍
+## 7. Cell 类型的介绍
 
 ### 1. LMFormCell
 基类cell:其他类型cell继承该cell，主要功能显示文本，不可编辑。可根据需求配置相应UI和数据。
@@ -213,16 +223,4 @@ LMForm 维护一张注册表建立key与cellClass的一一对应关系，单例`
 
 需要注意的是注册表是个字典，**key的定义不能重复**。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ ## 8. 项目地址：[Demo](https://github.com/MaricleZhang/LMForm.git) 
