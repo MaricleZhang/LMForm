@@ -43,7 +43,7 @@
     
     self.textField.frame = CGRectMake(self.titleLabel.maxX + LM_DefaultSpace , 0, LM_Screen_Width - self.titleLabel.maxX - LM_ObjDefault(self.model.margin, LM_DefautMargin) - LM_DefaultSpace , self.contentView.height);
 
-    self.line.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin), self.contentView.height - 1, self.contentView.width - LM_ObjDefault(self.model.margin, LM_DefautMargin) * 2, 1);
+    self.line.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin), self.contentView.height - 0.5, self.contentView.width - LM_ObjDefault(self.model.margin, LM_DefautMargin) * 2, 0.5);
 }
 
 #pragma mark - Responce

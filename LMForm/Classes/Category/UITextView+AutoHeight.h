@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,assign) NSUInteger cm_maxNumberOfLines;
 
+@property (nonatomic,assign) CGFloat originalHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

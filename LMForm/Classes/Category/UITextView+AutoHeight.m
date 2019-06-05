@@ -7,11 +7,11 @@
 
 #import "UITextView+AutoHeight.h"
 #import <objc/runtime.h>
+#import "LMMarco.h"
 
 @interface UITextView ()
 
 @property (nonatomic,strong) UITextView *placeHolderTextView;
-@property (nonatomic,assign) CGFloat originalHeight;
 
 @end
 
@@ -147,7 +147,7 @@
 
 - (void)updateHight
 {
-    self.placeHolderTextView.hidden = self.text.length;
+    self.placeHolderTextView.hidden = (self.text.length > 0);
     CGFloat maxHeight =  ceil(self.font.lineHeight * self.cm_maxNumberOfLines +  self.textContainerInset.top + self.textContainerInset.bottom);
     NSInteger height = self.text.length ? ceil([self sizeThatFits:CGSizeMake(self.frame.size.width, MAXFLOAT)].height) : self.originalHeight;
     
@@ -170,18 +170,16 @@
 - (void)textViewValueChanged
 {
     self.placeHolderTextView.hidden = self.text.length;
-    
     if(!self.text.length)
     {
         self.placeHolderTextView.text = self.cm_placeholder;
-        self.placeHolderTextView.textColor = self.cm_placeholderColor ?: [UIColor lightGrayColor];
+        self.placeHolderTextView.textColor = self.cm_placeholderColor ?: LM_UIColorFromHEX(0xC0C0C0);
         self.placeHolderTextView.font = self.cm_placeholderFont?:self.font;
-        
         self.placeHolderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
-        
         self.placeHolderTextView.textAlignment = self.textAlignment;
         self.placeHolderTextView.frame = self.bounds;
     }
+
     [self updateHight];
 }
 

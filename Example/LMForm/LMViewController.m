@@ -33,21 +33,7 @@
     [self.dataArray addObject:[self loadSelector]];
     [self.dataArray addObject:[self loadDateSelector]];
     [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-
     [self.dataArray addObject:[self loadTextView]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
-    [self.dataArray addObject:[self loadAdressInput]];
 
 //    [self.dataArray addObject:[self loadCustom]];
 
