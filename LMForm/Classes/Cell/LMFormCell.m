@@ -116,7 +116,7 @@
     self.titleLabel.textColor = LM_ObjDefault(model.leftTextColor, LM_UIColorFromHEX(0x666666));
     self.textField.textColor = LM_ObjDefault(model.rightTextColor, LM_UIColorFromHEX(0x333333));
     self.titleLabel.font = LM_ObjDefault(model.leftLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
-    self.titleLabel.font = LM_ObjDefault(model.rightLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
+    self.textField.font = LM_ObjDefault(model.rightLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
 }
 
 @end

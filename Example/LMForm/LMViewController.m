@@ -33,6 +33,22 @@
     [self.dataArray addObject:[self loadSelector]];
     [self.dataArray addObject:[self loadDateSelector]];
     [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+
+    [self.dataArray addObject:[self loadTextView]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+    [self.dataArray addObject:[self loadAdressInput]];
+
 //    [self.dataArray addObject:[self loadCustom]];
 
     self.tableView.dataArray = self.dataArray;
@@ -132,6 +148,29 @@
 {
     LMFormModel *model = [LMFormModel new];
     model.formType = kFormTypeAddressInput;
+    model.title = @"详细地址";
+    model.key = @"detailAdress";
+    model.value = @"";
+    model.placeholder = @"请输入详细地址";
+    model.height = LM_XX_6(68);
+    model.message = @"详细地址不得少于5位";
+    model.validateBlock = ^BOOL(LMFormModel * _Nullable model) {
+        if (model.value.length < 5)
+        {
+            [LMWindowHud showHud:model.message];
+            return NO;
+        }
+        return YES;
+    };
+    
+    return model;
+}
+
+// textView cell高度动态变化
+- (LMFormModel *)loadTextView
+{
+    LMFormModel *model = [LMFormModel new];
+    model.formType = kFormTypeTextView;
     model.title = @"详细地址";
     model.key = @"detailAdress";
     model.value = @"";

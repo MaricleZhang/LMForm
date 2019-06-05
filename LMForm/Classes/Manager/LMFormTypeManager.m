@@ -14,6 +14,7 @@
 #import "LMAddressCell.h"
 #import "IQKeyboardManager.h"
 #import "LMFormAddressInputCell.h"
+#import "LMFormTextViewCell.h"
 
 @interface LMFormTypeManager ()
 
@@ -53,6 +54,7 @@
     [self.keyCellTypes setObject:[LMDateCell class] forKey:kFormTypeDate];
     [self.keyCellTypes setObject:[LMAddressCell class] forKey:kFormTypeAddress];
     [self.keyCellTypes setObject:[LMFormAddressInputCell class] forKey:kFormTypeAddressInput];
+    [self.keyCellTypes setObject:[LMFormTextViewCell class] forKey:kFormTypeTextView];
 }
 
 - (void)registerCellClass:(Class)cls forKey:(NSString *)key

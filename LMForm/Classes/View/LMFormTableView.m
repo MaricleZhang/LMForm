@@ -87,7 +87,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LMFormModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    
+
     return (model.height > 0) ? model.height : LM_XX_6(50);
 }
 
