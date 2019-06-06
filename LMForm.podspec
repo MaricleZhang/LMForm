@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LMForm'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'LMForm 动态配置表单解决方案'
 
 # This description is used to generate tags and improve search results.
