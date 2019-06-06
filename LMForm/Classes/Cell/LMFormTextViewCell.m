@@ -58,6 +58,7 @@
     {
         _textView = [[UITextView alloc] init];
         _textView.frame = CGRectMake(LM_DefautMargin,LM_XX_6(30), LM_Screen_Width - 2 * LM_DefautMargin , self.model.height - LM_XX_6(30) - 1);
+        
         _textView.delegate = self;
         _textView.scrollEnabled = NO;
     }
@@ -79,7 +80,10 @@
 - (void)configModel:(LMFormModel *)model
 {
     [super configModel:model];
-
+    
+    //update:Keyon
+    self.textView.originalHeight = self.model.height;
+    
     self.textView.textColor = LM_ObjDefault(model.rightTextColor, LM_UIColorFromHEX(0x333333));
     self.textView.font = LM_ObjDefault(model.rightLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
     self.textView.cm_placeholder = model.placeholder;
