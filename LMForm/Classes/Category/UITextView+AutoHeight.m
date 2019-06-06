@@ -52,12 +52,16 @@
 
 - (CGFloat)originalHeight
 {
-    return [objc_getAssociatedObject(self, @selector(originalHeight)) floatValue];
-}
-
-- (void)setOriginalHeight:(CGFloat)originalHeight
-{
-    objc_setAssociatedObject(self, @selector(originalHeight), @(originalHeight), OBJC_ASSOCIATION_ASSIGN);
+    static CGFloat originalHeight;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        [self.superview layoutIfNeeded];
+        originalHeight = self.bounds.size.height;
+    });
+    
+    return originalHeight;
 }
 
 - (NSString *)cm_placeholder

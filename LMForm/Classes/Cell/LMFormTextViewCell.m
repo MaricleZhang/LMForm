@@ -26,6 +26,7 @@
 
     [self.textField removeFromSuperview];
     [self.contentView addSubview:self.textView];
+    
 }
 
 - (void)layoutSubviews
@@ -80,9 +81,6 @@
 - (void)configModel:(LMFormModel *)model
 {
     [super configModel:model];
-    
-    //update:Keyon
-    self.textView.originalHeight = self.model.height;
     
     self.textView.textColor = LM_ObjDefault(model.rightTextColor, LM_UIColorFromHEX(0x333333));
     self.textView.font = LM_ObjDefault(model.rightLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
