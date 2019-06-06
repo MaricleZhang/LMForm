@@ -54,6 +54,7 @@ pod install
 |选择器 | kFormTypeSelector | LMFormSelectorCell |
 |日期选择器 | kFormTypeDate | LMDateCell |
 |地址输入框 | kFormTypeAddressInput | LMFormAddressInputCell |
+|可变输入框 | kFormTypeTextView | LMFormTextViewCell |
 
 可根据需求来选择对应的类型，例如输入框的model配置代码如下：
 ```
@@ -199,7 +200,11 @@ pod install
 
 地址输入cell：主要用来输入较多数字的信息，分两行显示。
 
-### 6.自定义cell
+### 6. LMFormTextViewCell 
+
+可变输入框cell：cell高度可随textview 高度变化而变化
+
+### 7.自定义cell
 
 #### 创建
 LMForm 支持cell的完全自定义，创建的自定义cell需要遵循协议```LMFormCellProtocol```，
