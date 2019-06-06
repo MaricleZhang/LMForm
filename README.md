@@ -232,4 +232,4 @@ LMForm 维护一张注册表建立key与cellClass的一一对应关系，单例`
  
  ## 联系
  
- 如有问题请邮件：
+ 如有问题请邮件：maricle.zhang@gmail.com
