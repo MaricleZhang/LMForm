@@ -157,9 +157,9 @@
 {
     LMFormModel *model = [LMFormModel new];
     model.formType = kFormTypeTextView;
-    model.title = @"详细地址";
+    model.title = @"高度可变输入框";
     model.key = @"detailAdress";
-    model.value = @"";
+    model.value = @"detailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdressdetailAdress";
     model.placeholder = @"请输入详细地址";
     model.height = LM_XX_6(68);
     model.message = @"详细地址不得少于5位";
