@@ -54,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) LMAddressCellDidSelectedBlock addressCellDidSelectedBlock;
 @property (nonatomic, assign) NSString *addressType;
 
+// LMFormTextViewCell
+@property (nonatomic, assign) NSInteger lm_maxNumberOfLines;
+
 @end
 
 

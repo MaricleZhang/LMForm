@@ -84,8 +84,8 @@
     
     self.textView.textColor = LM_ObjDefault(model.rightTextColor, LM_UIColorFromHEX(0x333333));
     self.textView.font = LM_ObjDefault(model.rightLabelFont, [UIFont systemFontOfSize:LM_XX_6(14)]);
-    self.textView.cm_placeholder = model.placeholder;
-    self.textView.cm_maxNumberOfLines = 3;
+    self.textView.lm_placeholder = model.placeholder;
+    self.textView.lm_maxNumberOfLines = model.lm_maxNumberOfLines;
     self.textView.text = model.value;
     
     self.textView.frame = CGRectMake(LM_ObjDefault(self.model.margin, LM_DefautMargin) ,LM_XX_6(30), LM_Screen_Width - 2 * LM_ObjDefault(self.model.margin, LM_DefautMargin) , self.model.height - LM_XX_6(30) - 1);

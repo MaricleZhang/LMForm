@@ -64,59 +64,59 @@
     return originalHeight;
 }
 
-- (NSString *)cm_placeholder
+- (NSString *)lm_placeholder
 {
-    return objc_getAssociatedObject(self, @selector(cm_placeholder));
+    return objc_getAssociatedObject(self, @selector(lm_placeholder));
 }
 
-- (void)setCm_placeholder:(NSString *)cm_placeholder
+- (void)setLm_placeholder:(NSString *)lm_placeholder
 {
-    objc_setAssociatedObject(self, @selector(cm_placeholder), cm_placeholder, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(lm_placeholder), lm_placeholder, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self placeHolderTextView];
 }
 
-- (UIColor *)cm_placeholderColor
+- (UIColor *)lm_placeholderColor
 {
-    return objc_getAssociatedObject(self, @selector(cm_placeholderColor));
+    return objc_getAssociatedObject(self, @selector(lm_placeholderColor));
 }
 
-- (void)setCm_placeholderColor:(UIColor *)cm_placeholderColor
+- (void)setLm_placeholderColor:(UIColor *)lm_placeholderColor
 {
-    objc_setAssociatedObject(self, @selector(cm_placeholderColor), cm_placeholderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(lm_placeholderColor), lm_placeholderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self textViewValueChanged];
 }
 
-- (UIFont *)cm_placeholderFont
+- (UIFont *)lm_placeholderFont
 {
-    return objc_getAssociatedObject(self, @selector(cm_placeholderFont));
+    return objc_getAssociatedObject(self, @selector(lm_placeholderFont));
 }
 
-- (void)setCm_placeholderFont:(UIFont *)cm_placeholderFont
+- (void)setLm_placeholderFont:(UIFont *)lm_placeholderFont
 {
-    objc_setAssociatedObject(self, @selector(cm_placeholderFont), cm_placeholderFont, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(lm_placeholderFont), lm_placeholderFont, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     [self textViewValueChanged];
 }
 
-- (NSUInteger)cm_maxNumberOfLines
+- (NSUInteger)lm_maxNumberOfLines
 {
-    return [objc_getAssociatedObject(self, @selector(cm_maxNumberOfLines)) integerValue];
+    return [objc_getAssociatedObject(self, @selector(lm_maxNumberOfLines)) integerValue];
 }
 
-- (void)setCm_maxNumberOfLines:(NSUInteger)cm_maxNumberOfLines
+- (void)setLm_maxNumberOfLines:(NSUInteger)lm_maxNumberOfLines
 {
-    objc_setAssociatedObject(self, @selector(cm_maxNumberOfLines), @(cm_maxNumberOfLines), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(lm_maxNumberOfLines), @(lm_maxNumberOfLines), OBJC_ASSOCIATION_ASSIGN);
     [self textViewValueChanged];
 }
 
-- (BOOL)cm_autoLineBreak
+- (BOOL)lm_autoLineBreak
 {
-    return [objc_getAssociatedObject(self, @selector(cm_autoLineBreak)) boolValue];
+    return [objc_getAssociatedObject(self, @selector(lm_autoLineBreak)) boolValue];
 }
 
-- (void)setCm_autoLineBreak:(BOOL)cm_autoLineBreak
+- (void)setLm_autoLineBreak:(BOOL)lm_autoLineBreak
 {
-    objc_setAssociatedObject(self, @selector(cm_autoLineBreak), @(cm_autoLineBreak), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(lm_autoLineBreak), @(lm_autoLineBreak), OBJC_ASSOCIATION_ASSIGN);
     [self textViewValueChanged];
 }
 
@@ -148,17 +148,17 @@
 - (void)updateHight
 {
     self.placeHolderTextView.hidden = (self.text.length > 0);
-    CGFloat maxHeight =  ceil(self.font.lineHeight * self.cm_maxNumberOfLines +  self.textContainerInset.top + self.textContainerInset.bottom);
+    CGFloat maxHeight =  ceil(self.font.lineHeight * self.lm_maxNumberOfLines +  self.textContainerInset.top + self.textContainerInset.bottom);
     NSInteger height = self.text.length ? ceil([self sizeThatFits:CGSizeMake(self.frame.size.width, MAXFLOAT)].height) : self.originalHeight;
     
-    if (!self.cm_maxNumberOfLines && height > self.originalHeight)
+    if (!self.lm_maxNumberOfLines && height > self.originalHeight)
     {
         CGRect newFrame = self.frame;
         newFrame.size.height = height;
         self.frame = newFrame;
     }
     
-    self.scrollEnabled = height > maxHeight && self.cm_maxNumberOfLines;
+    self.scrollEnabled = height > maxHeight && self.lm_maxNumberOfLines;
     if (maxHeight >= height && height >= self.originalHeight)
     {
         CGRect newFrame = self.frame;
@@ -172,9 +172,9 @@
     self.placeHolderTextView.hidden = self.text.length;
     if(!self.text.length)
     {
-        self.placeHolderTextView.text = self.cm_placeholder;
-        self.placeHolderTextView.textColor = self.cm_placeholderColor ?: LM_UIColorFromHEX(0xC0C0C0);
-        self.placeHolderTextView.font = self.cm_placeholderFont?:self.font;
+        self.placeHolderTextView.text = self.lm_placeholder;
+        self.placeHolderTextView.textColor = self.lm_placeholderColor ?: LM_UIColorFromHEX(0xC0C0C0);
+        self.placeHolderTextView.font = self.lm_placeholderFont?:self.font;
         self.placeHolderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
         self.placeHolderTextView.textAlignment = self.textAlignment;
         self.placeHolderTextView.frame = self.bounds;
