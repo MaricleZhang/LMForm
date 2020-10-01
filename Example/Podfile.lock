@@ -6,10 +6,6 @@ PODS:
 DEPENDENCIES:
   - LMForm (from `../`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - IQKeyboardManager
-
 EXTERNAL SOURCES:
   LMForm:
     :path: "../"
