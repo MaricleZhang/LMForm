@@ -2,7 +2,10 @@
 
 ## 2020-10-22
 
-兼容iOS 14.0
+1.兼容iOS 14.0
+2.设置UItextField设置_placeholderLabel.textColor 崩溃处理
+3._datePicker.preferredDatePickerStyle 支持13.4
+
 
 # LMForm
 
