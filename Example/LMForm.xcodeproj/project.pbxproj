@@ -202,7 +202,7 @@
 				ORGANIZATIONNAME = MaricleZhang;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 88X46KN5Q5;
+						DevelopmentTeam = C69KXLDX73;
 					};
 				};
 			};
@@ -211,6 +211,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -244,16 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-LMForm_Example/Pods-LMForm_Example-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/LMForm/LMForm.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LMForm.bundle",
@@ -426,12 +423,12 @@
 			baseConfigurationReference = 4FC47A9DA5415BF6A8BC5E15 /* Pods-LMForm_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 88X46KN5Q5;
+				DEVELOPMENT_TEAM = C69KXLDX73;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LMForm/LMForm-Prefix.pch";
 				INFOPLIST_FILE = "LMForm/LMForm-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.LMForm-Exampl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

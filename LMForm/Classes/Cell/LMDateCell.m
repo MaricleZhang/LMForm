@@ -74,6 +74,9 @@
     {
         _datePicker = [[UIDatePicker alloc] init];
         _datePicker.datePickerMode = UIDatePickerModeDate;
+        if (@available(iOS 13.4, *)) {
+            _datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+        }
         _datePicker.backgroundColor = [UIColor clearColor];
         _datePicker.date = [NSDate date];
         _datePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];

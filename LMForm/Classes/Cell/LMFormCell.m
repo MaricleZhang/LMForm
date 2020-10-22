@@ -79,7 +79,6 @@
         _textField.textAlignment = NSTextAlignmentRight;
         _textField.textColor = LM_UIColorFromHEX(0x333333);
         _textField.font = [UIFont systemFontOfSize:LM_XX_6(14)];
-        [_textField setValue:LM_UIColorFromHEX(0xC0C0C0) forKeyPath:@"_placeholderLabel.textColor"];
         [_textField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;
