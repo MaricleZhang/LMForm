@@ -35,5 +35,5 @@ Pod::Spec.new do |s|
   }
  
   s.public_header_files = 'LMForm/Classes/**/*.h'
-  s.dependency 'IQKeyboardManager', '~> 6.3.0'
+  s.dependency 'IQKeyboardManager'
 end
